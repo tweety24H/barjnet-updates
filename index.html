@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BarjNet VIP — نظام إدارة أبراج الإنترنت</title>
+<meta name="description" content="برنامج ويندوز لإدارة مشتركين أبراج الإنترنت: مشتركين، تجديد، ديون، وصولات، تذكير واتساب وأرباح. تجربة مجانية 7 أيام.">
+<meta property="og:title" content="BarjNet VIP — نظام إدارة أبراج الإنترنت">
+<meta property="og:description" content="كل مشتركينك ببرنامج واحد. تجربة مجانية 7 أيام.">
+<meta property="og:image" content="img/share.jpg">
+<meta name="theme-color" content="#00877D">
+<link rel="icon" href="img/icon.png">
+<style>
+  :root {
+    --teal: #00877d; --teal-dark: #005f58; --teal-deep: #003f3a; --mint: #d9f5f1;
+    --wa: #1fa855; --bg: #f5faf9; --card: #ffffff; --ink: #12201f; --muted: #5a6b69; --line: #dbe7e5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f1716; --card: #17211f; --ink: #eaf3f2; --muted: #9db0ad; --line: #26332f; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Segoe UI", Tahoma, "Noto Sans Arabic", Arial, sans-serif; line-height: 1.7; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+  .hero { background: linear-gradient(160deg, #00a396 0%, var(--teal) 45%, var(--teal-deep) 100%); color: #fff; padding: 44px 0 0; text-align: center; overflow: hidden; }
+  .hero .logo { width: 150px; margin: 0 auto 18px; }
+  .hero h1 { font-size: clamp(1.7rem, 5.2vw, 2.7rem); line-height: 1.35; margin: 0 0 10px; text-wrap: balance; }
+  .hero p.lead { font-size: clamp(1rem, 2.8vw, 1.2rem); color: var(--mint); margin: 0 auto 26px; max-width: 34em; text-wrap: pretty; }
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 12px 26px; border-radius: 999px; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.22); }
+  .btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .btn-dl { background: #fff; color: var(--teal-dark); }
+  .btn-wa { background: var(--wa); color: #fff; }
+  .meta { margin: 16px 0 0; font-size: .92rem; color: var(--mint); }
+  .meta span { white-space: nowrap; }
+  .hero-shot { margin: 34px auto -4px; width: 100%; max-width: 900px; border-radius: 14px 14px 0 0; box-shadow: 0 -6px 40px rgba(0,0,0,.35); border: 6px solid #fff; border-bottom: 0; }
+
+  section { padding: 54px 0; }
+  h2 { font-size: clamp(1.4rem, 4vw, 1.9rem); margin: 0 0 8px; text-align: center; text-wrap: balance; }
+  .sub { text-align: center; color: var(--muted); margin: 0 auto 30px; max-width: 36em; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+  .feat { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .feat h3 { margin: 0 0 4px; font-size: 1.08rem; display: flex; align-items: center; gap: 10px; }
+  .feat h3::before { content: "✓"; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--teal); color: #fff; font-size: .85rem; display: grid; place-items: center; }
+  .feat p { margin: 0; color: var(--muted); font-size: .96rem; }
+
+  .show { display: grid; grid-template-columns: 1.5fr 1fr; gap: 26px; align-items: center; margin-bottom: 38px; }
+  .show:nth-child(even) .pic { order: 2; }
+  .show .pic img { border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+  .show .pic.tall img { max-height: 420px; width: auto; margin: 0 auto; }
+  .show h3 { font-size: 1.3rem; margin: 0 0 6px; }
+  .show p { margin: 0; color: var(--muted); }
+  @media (max-width: 720px) { .show { grid-template-columns: 1fr; gap: 14px; } .show:nth-child(even) .pic { order: 0; } }
+
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; padding: 0; margin: 0; list-style: none; }
+  .steps li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .steps li::before { content: counter(s); display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 700; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+  .steps b { display: block; font-size: 1.05rem; }
+  .steps span { color: var(--muted); font-size: .96rem; }
+  .note { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-inline-start: 5px solid #0a5fbf; border-radius: 12px; padding: 14px 18px; font-size: .96rem; }
+  .note b[dir=ltr] { unicode-bidi: isolate; }
+  .phone-note { display: none; margin: 18px auto 0; max-width: 30em; background: rgba(255,255,255,.14); border-radius: 12px; padding: 10px 14px; font-size: .92rem; }
+  @media (max-width: 720px) { .phone-note { display: block; } }
+
+  .final { background: linear-gradient(160deg, var(--teal) 0%, var(--teal-deep) 100%); color: #fff; text-align: center; }
+  .final .sub { color: var(--mint); }
+  footer { padding: 22px 0; text-align: center; color: var(--muted); font-size: .9rem; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="img/logo-white.png" alt="BarjNet VIP" width="520" height="540">
+    <h1>صاحب برج إنترنت؟ كل مشتركينك ببرنامج واحد</h1>
+    <p class="lead">عوف الدفتر والحسابات باليد. تعرف منو منتهي، تذكّره بالواتساب، تطبع وصله، وتشوف أرباحك بضغطة.</p>
+    <div class="cta">
+      <a class="btn btn-dl" href="https://github.com/tweety24H/barjnet-updates/releases/latest/download/BarjNet-Setup-VIP-Final-Single.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+        تحميل البرنامج
+      </a>
+      <a class="btn btn-wa" href="https://wa.me/9647732605484?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20BarjNet%20VIP">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.500 0 0 1-12.700 7.400L3 20.500l1.700-5A8.500 8.500 0 1 1 21 11.500z"/></svg>
+        راسلنا واتساب
+      </a>
+    </div>
+    <p class="meta"><span>تجربة مجانية 7 أيام</span> • <span>ويندوز 10 و 11</span> • <span dir="ltr">14 MB</span></p>
+    <p class="phone-note">البرنامج يشتغل على الحاسبة. افتح هذي الصفحة من حاسبتك، أو راسلنا واتساب ونرسل لك الرابط.</p>
+    <img class="hero-shot" src="img/home.webp" alt="شاشة المشتركين في BarjNet VIP" width="1500" height="955">
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>شنو يسوي البرنامج؟</h2>
+    <p class="sub">كل اللي يحتاجه صاحب البرج بشغله اليومي.</p>
+    <div class="grid">
+      <div class="feat"><h3>إدارة المشتركين</h3><p>إضافة وتعديل وبحث بالاسم أو الرقم أو العنوان.</p></div>
+      <div class="feat"><h3>تعرف منو منتهي</h3><p>فلاتر جاهزة: فعال، ينتهي قريباً، يخلص اليوم، منتهي، عليه دين.</p></div>
+      <div class="feat"><h3>تجديد بضغطة</h3><p>30 يوم بضغطة وحدة، مع تسجيل الدفعة والديون.</p></div>
+      <div class="feat"><h3>تذكير واتساب</h3><p>رسالة جاهزة باسم المشترك، لواحد أو لكل المنتهين.</p></div>
+      <div class="feat"><h3>وصل مرتب</h3><p>للطابعة الحرارية أو ورق كامل، باسم برجك ورقمك.</p></div>
+      <div class="feat"><h3>أرباح وتقارير</h3><p>أرباح اليوم والشهر والسنة، وتقرير يومي جاهز للطباعة.</p></div>
+      <div class="feat"><h3>تصدير إكسل</h3><p>قائمة مشتركينك كلها بملف إكسل.</p></div>
+      <div class="feat"><h3>بياناتك بأمان</h3><p>نسخة احتياطية تلقائية كل ما تسد البرنامج.</p></div>
+      <div class="feat"><h3>بدون إنترنت</h3><p>يشتغل على حاسبتك حتى لو النت مقطوع.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>شوفه من الداخل</h2>
+    <p class="sub">صور حقيقية من البرنامج.</p>
+    <div class="show">
+      <div class="pic"><img src="img/whatsapp.webp" alt="إرسال تذكير واتساب للمنتهين" loading="lazy" width="1500" height="955"></div>
+      <div><h3>ذكّر المنتهين بالواتساب</h3><p>البرنامج يجهز الرسالة ويفتح واتساب على رقم المشترك، واحد ورا الثاني.</p></div>
+    </div>
+    <div class="show">
+      <div class="pic"><img src="img/stats.webp" alt="شاشة الإحصائيات والأرباح" loading="lazy" width="1500" height="955"></div>
+      <div><h3>أرباحك قدام عينك</h3><p>أرباح اليوم والشهر والسنة، مجموع الديون، ورسم لآخر 12 شهر.</p></div>
+    </div>
+    <div class="show">
+      <div class="pic tall"><img src="img/receipt.webp" alt="وصل اشتراك حراري" loading="lazy" width="600" height="1009"></div>
+      <div><h3>وصل لكل مشترك</h3><p>يطبع على الطابعة الحرارية، وبيه اسم برجك ومدة الاشتراك والمبلغ.</p></div>
+    </div>
+    <div class="show">
+      <div class="pic"><img src="img/dark.webp" alt="الوضع الليلي" loading="lazy" width="1500" height="955"></div>
+      <div><h3>وضع ليلي</h3><p>مريح للعين إذا شغلك بالليل.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="install" style="padding-top:0">
+  <div class="wrap">
+    <h2>شلون أبدي؟</h2>
+    <p class="sub">دقيقتين وتكون شغّال.</p>
+    <ol class="steps">
+      <li><b>حمّل ونصّب</b><span>اضغط "تحميل البرنامج"، شغّل الملف واضغط "التالي".</span></li>
+      <li><b>جرّب مجاناً</b><span>7 أيام تجربة كاملة لحد 10 مشتركين.</span></li>
+      <li><b>فعّل النسخة الكاملة</b><span>اضغط الزر الأخضر بالبرنامج، يرسل معرّف جهازك بالواتساب ويوصلك الكود.</span></li>
+    </ol>
+    <p class="note">إذا طلعت رسالة زرقاء من ويندوز عند التنصيب: اضغط <b dir="ltr">More info</b> وبعدها <b dir="ltr">Run anyway</b>. هذي رسالة عادية تطلع لأي برنامج جديد.</p>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>جربه مجاناً 7 أيام</h2>
+    <p class="sub">وإذا عندك أي سؤال، راسلنا واتساب.</p>
+    <div class="cta">
+      <a class="btn btn-dl" href="https://github.com/tweety24H/barjnet-updates/releases/latest/download/BarjNet-Setup-VIP-Final-Single.exe">تحميل البرنامج</a>
+      <a class="btn btn-wa" href="https://wa.me/9647732605484"><span dir="ltr">0773 260 5484</span></a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 BarjNet VIP</div></footer>
+</body>
+</html>
